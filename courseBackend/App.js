@@ -5,9 +5,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const jwt = require("jsonwebtoken");
-
-
-
 const app = express();
 
 app.use(morgan("dev"));
