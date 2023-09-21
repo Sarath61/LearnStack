@@ -6,7 +6,6 @@ const cors = require("cors");
 
 const jwt = require("jsonwebtoken");
 const app = express();
-
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
