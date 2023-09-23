@@ -1,8 +1,0 @@
-# dependencies
-server/node_modules
-
-
-
-#misc
-server/config.env
-
