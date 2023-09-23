@@ -1,0 +1,4 @@
+#dependencies
+server/node_modules
+
+server/config.env
