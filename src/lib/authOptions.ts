@@ -2,6 +2,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOption } from "next-auth";
 import { SignInSchema, SignInSchemaType } from "./validators/auth.validators";
+import { ErrorHandler } from "./error";
 
 export const authOptions = {
   providers: [
@@ -18,10 +19,24 @@ export const authOptions = {
       },
       async authorize(credentials): Promise<any> {
         const result = SignInSchema.safeParse(credentials);
-        if(result){
-          throw new 
 
+        if (!result.success) {
+          throw new ErrorHandler(
+            "Input Validation failed",
+            "VALIDATION_ERROR",
+            {
+              fieldErros: result.error?.flatten().fieldErrors,
+            }
+          );
         }
+        // const {email ,password} = result.data;
+
+        return {
+          id:user.id,
+          name: user.name
+          
+        }
+
       },
     }),
   ],
